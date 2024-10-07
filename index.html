@@ -11,10 +11,59 @@
   <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.ico">
   <meta name="HandheldFriendly" content="true">
   <title>AK LOOP 공병 수거 캠페인</title>
-  <link rel="stylesheet" href="css/theme.min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+  $(document).ready(function() {
+    // 초기 데이터 설정
+    let countTo = $(".count_num").data("count"); // 29381
+    let currentCount = 29000;
+    let duration = 2000; // 애니메이션 지속 시간 (밀리초)
+    let incrementTime = Math.floor(duration / countTo); // 증가 간격
+  
+    function updateCount() {
+      if (currentCount < countTo) {
+        currentCount++;
+        $(".count_num").text(numberWithCommas(currentCount));
+        setTimeout(updateCount, incrementTime);
+      }
+    }
+  
+    updateCount(); // 카운트 시작
+  
+    // AOS 초기화 및 스크롤 이벤트 설정 (이전 코드 그대로)
+    AOS.init({
+      duration: 800,
+    });
+  
+    const header = document.querySelector(".navbar");
+    const headerHeight = header.offsetHeight;
+  
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= headerHeight) {
+        header.classList.add("scrolled", "shadow-sm");
+      } else {
+        header.classList.remove("scrolled", "shadow-sm");
+      }
+    });
+  });
 
-   <style>
-
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+  </script>
+  
+  
+    
+  
+  <style>
+/*
+c:\오피스키퍼파일암호해제\#DWP\IL교육\랜딩페이지\workspace\2\fonts\GmarketSansTTFBold.ttf 
+c:\오피스키퍼파일암호해제\#DWP\IL교육\랜딩페이지\workspace\2\fonts\GmarketSansTTFLight.ttf 
+c:\오피스키퍼파일암호해제\#DWP\IL교육\랜딩페이지\workspace\2\fonts\GmarketSansTTFMedium.ttf
+*/
 /* inter-300 - latin */
 @font-face {
   font-family: 'Inter';
@@ -22,8 +71,7 @@
   font-weight: 300;
   font-display: swap;
   src: local(''),
-       url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/inter-v12-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('./fonts/GmarketSansTTFLight.ttf') format('ttf'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
@@ -32,8 +80,8 @@
   font-weight: 500;
   font-display: swap;
   src: local(''),
-       url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/inter-v12-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    
+       url('./fonts/GmarketSansTTFMedium.ttf') format('ttf'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: 'Inter';
@@ -41,8 +89,8 @@
   font-weight: 700;
   font-display: swap;
   src: local(''),
-       url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/inter-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+     
+       url('./fonts/GmarketSansTTFBold.ttf') format('ttf'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 </style>
@@ -50,49 +98,128 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
-  
+  <nav id="navScroll" class="navbar navbar-expand-lg navbar-light fixed-top" tabindex="0">
+    <div class="container">
+      <a class="navbar-brand pe-4 fs-4" href="/">
+        <span class="ms-1 fw-bolder">AEKYUNG</span>
+      </a>
 
-  <main>
-  <!-- 메인 헤더 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link" href="#services">
+          플라스틱 수거
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#aboutus">
+          AK LOOP 활동
+        </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#numbers">
+            AK LOOP 소식
+          </a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <main>
     <div class="py-vh-4 d-flex justify-content-between">
       <div class="col-lg-12">
-        <img src="img/webp/1.png"  class="" alt="" data-aos="fade">
-        <img src="img/webp/2.png"  class="" alt="" data-aos="fade">
-        <img src="img/webp/3.png"  class="" alt="" data-aos="fade">
-        <img src="img/webp/4.png"  class="" alt="" data-aos="fade">
-        <img src="img/webp/5.png"  class="" alt="" data-aos="fade">
-</div>
+        <img src="img/webp/1.png" class="" alt="" data-aos="fade">
+        <img src="img/webp/2.png" class="" alt="" data-aos="">
+        <img src="img/webp/3.png" class="" alt="" data-aos="">
+		    <img src="img/webp/4.png" class="" alt="" data-aos="fade">
+		    <img src="img/webp/5.png" class="" alt="" data-aos="fade">
+      </div>
+    </div> 
+       
+    <div class="bg-light w-100 overflow-hidden" id="testimonials">
+      <div class="container py-vh-6">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8 text-center">
+            <h2 class="display-1 mb-5"><strong>우리가 함께한 오늘의 실천</strong></h2>
+            <p class="lead">우리가 가져온 플라스틱,<br>지금까지 얼마나 모였을까요?</p>
+          </div>
+  
+          <div class="d-flex">
+            <div class="col-md-3 flex-fill pt-3 pe-4 pe-md-0">
+            </div>
+            <div class="col-lg-7" data-aos="fade-up">
+              <p class="">
+                <div class="display-1 fw-bold py-5">
+                <img src="img/webp/recycle_icon3.png" width="120" height="120" class="" alt="" data-aos="fade" ><strong class="count_num" data-count="29381">0</strong> kg
+                </div>
+              </p>
+            </div>
+          </div>
+          <h3 class="py-5 border-bottom border-dark text-center" data-aos="fade-right">우리가 함께 깨끗하고 아름다운 우리 지구를 지켰어요.</h3>
+          <h3 class="py-5 text-center" data-aos="fade-right">(2024.09 기준 업데이트)</h3>
+        </div>
+      </div>
+    </div>
 
-
+    <div class="col-lg-12">
+      <img src="img/webp/6.png"  class="" alt="" data-aos="fade">
+      <img src="img/webp/7.png"  class="" alt="" data-aos="fade">
+    </div>
   </main>
 
 
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/aos.js"></script>
- <script>
- AOS.init({
-   duration: 800, // values from 0 to 3000, with step 50ms
- });
- </script>
 
- <script>
-  let scrollpos = window.scrollY
-  const header = document.querySelector(".navbar")
-  const header_height = header.offsetHeight
+  <footer>
+    <div class="container small border-top">
+      <div class="row py-5 d-flex justify-content-between">
+        <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+          <address class="text-secondary mt-3">
+            <strong>지구수호대</strong><br>
+            AK LOOP 공병 수거 캠페인<br><br>
+            <abbr title="Phone">서울시 마포구 양화로 188</abbr>
+          </address>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+          <h3 class="h6 mb-3">개인정보처리방침</h3>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+          <h3 class="h6 mb-3">공지사항</h3>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3 p-5">
+          <h3 class="h6 mb-3">Contact Us</h3>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-  const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // values from 0 to 3000, with step 50ms
+    });
+  </script>
 
-  window.addEventListener('scroll', function() {
-    scrollpos = window.scrollY;
+  <script>
+    let scrollpos = window.scrollY
+    const header = document.querySelector(".navbar")
+    const header_height = header.offsetHeight
 
-    if (scrollpos >= header_height) { add_class_on_scroll() }
-    else { remove_class_on_scroll() }
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
 
-    console.log(scrollpos)
-  })
-</script>
+    window.addEventListener('scroll', function() {
+      scrollpos = window.scrollY;
 
-  </body>
+      if (scrollpos >= header_height) { add_class_on_scroll() }
+      else { remove_class_on_scroll() }
+
+      console.log(scrollpos)
+    })
+  </script>
+</body>
 </html>
